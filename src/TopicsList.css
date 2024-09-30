@@ -1,0 +1,151 @@
+/* Container */
+.topics-container {
+  background-color: #f0f9f0; /* Light green background */
+  padding: 20px 0; /* Top and bottom padding for green background */
+  width: 100%; /* Full-width green background */
+  min-height: 100vh; /* Ensure the container covers the full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner box */
+.inner-box {
+  background-color: #ffffff; /* White background for inner content */
+  max-width: 800px; /* Max width for the inner box */
+  width: 100%; /* Full width within the max-width */
+  padding: 20px; /* Padding inside the inner box */
+  border-radius: 10px; /* Optional: Rounded corners for the inner box */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for the inner box */
+}
+
+/* Search bar */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+/* Search bar input */
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensure padding is included in the element's width */
+}
+
+/* Common Topics */
+.common-topics {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Common Topics links */
+.common-topics a {
+  color: #007b5f;
+  text-decoration: none;
+}
+
+.common-topics a:hover {
+  text-decoration: underline;
+}
+
+/* Topic list */
+.topics-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Topic items */
+.topic-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #ffffff; /* White background for each topic item */
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Hover effect for topic items */
+.topic-item:hover {
+  background-color: #f8f8f8;
+}
+
+/* Topic icon */
+.topic-icon {
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+/* Topic name */
+.topic-name {
+  flex-grow: 1;
+  font-size: 18px;
+}
+
+/* Topic arrow */
+.topic-arrow {
+  font-size: 18px;
+  color: #007b5f;
+}
+
+.topics-container {
+  padding: 20px;
+}
+
+.inner-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.common-topics {
+  margin-bottom: 20px;
+}
+
+.topics-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.topic-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.topic-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  width: 100%;
+}
+
+.topic-icon {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.topic-name {
+  flex-grow: 1;
+}
+
+.topic-arrow {
+  font-size: 1.5rem;
+  color: #888;
+  margin-left: auto; /* Pushes the arrow to the right */
+}

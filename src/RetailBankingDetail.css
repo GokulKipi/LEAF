@@ -1,0 +1,167 @@
+/* Retail Banking Page Styles */
+.retail-banking-page {
+  padding: 20px;
+  background-color: #f8f8f8;
+  max-width: 1900px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 100vh; /* Ensure the page takes full height */
+  margin-top: 30px; /* Adjust this to add space for the header */
+}
+
+/* Container for the home button, title, and export button */
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Push home to left, export to right */
+  align-items: center; /* Center vertically */
+  margin-bottom: 20px;
+}
+
+/* Home button on the far left */
+.home-button {
+  color: #007bff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem; /* Match size to title */
+  animation: pulse 1.5s infinite; /* Apply the continuous animation */
+}
+
+/* Keyframes for the pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Original size */
+  }
+  50% {
+    transform: scale(1.1); /* Scale up */
+  }
+  100% {
+    transform: scale(1); /* Scale back to original size */
+  }
+}
+
+/* Title centered between home and export */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+  font-family: "Poppins", sans-serif; /* Use Poppins for a modern look */
+  font-size: 2.5rem;
+  font-weight: 700; /* Poppins weight for extra bold */
+  margin: 0;
+  text-transform: uppercase; /* Ensure text is always capitalized */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+}
+
+/* Export to PDF button on the far right */
+.export-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: auto; /* Push the button to the far right */
+}
+
+.export-button:hover {
+  background-color: #0056b3;
+}
+
+/* Section Styles */
+.section {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.section h2 {
+  background-color: #f5f5f5;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.category {
+  flex: 1 1 calc(25% - 20px);
+  margin: 10px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.category h3 {
+  background-color: #d3f4ff;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.topic-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  flex: 1 1 calc(33% - 20px);
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.topic-button:hover {
+  background-color: #e0f7fa;
+  color: #007bff;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .category {
+    flex: 1 1 calc(50% - 20px);
+  }
+  .topic-button {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .category {
+    flex: 1 1 100%;
+  }
+  .topic-button {
+    flex: 1 1 100%;
+  }
+}

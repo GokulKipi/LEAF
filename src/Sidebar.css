@@ -1,0 +1,49 @@
+.search-results-page {
+  padding: 20px;
+}
+
+.search-results-page h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.category-title {
+  background: linear-gradient(to right, #90bff1, #c9a1e2);
+  padding: 15px;
+  font-size: 28px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subcategories {
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+
+.subcat-button {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.subcat-button:hover {
+  background-color: #ced4da;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,73 @@
+/* Modal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 700px;
+  max-width: 90vw;
+}
+
+.modal-tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  background: lightgray;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  background: rgb(120, 189, 106);
+  color: white;
+}
+
+.sub-option-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sub-option-button {
+  background: rgb(200, 209, 200);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sub-option-button.selected {
+  background: rgb(105, 175, 105);
+  color: white;
+}
+
+.definition {
+  margin-top: 20px;
+}
+
+.close-button {
+  margin-top: 20px;
+  background: gray;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}

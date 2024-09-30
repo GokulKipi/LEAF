@@ -1,0 +1,191 @@
+/* Header container */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  position: relative;
+  height: 100px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Snowflake icon */
+.snowflake-icon {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  animation: rotate 2s linear infinite;
+}
+
+/* Animated header image */
+.header-image-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.header-image {
+  height: auto;
+  max-height: 50px;
+}
+
+/* Search container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.search-bar {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 300px;
+  background-color: #2a2a2a; /* Darker background for contrast */
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+}
+
+/* Open state for the sidebar */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Category Box */
+.category-box {
+  margin-bottom: 20px; /* Space between category boxes */
+  border: 1px solid #444; /* Border around each category box */
+  padding: 15px; /* Increased padding for better spacing */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #333; /* Background color for boxes */
+}
+
+/* Category Heading */
+.category-heading {
+  font-size: 20px; /* Font size for the category heading */
+  margin-bottom: 10px; /* Space below the heading */
+  color: #97cee4; /* Gold color for headings */
+}
+
+/* Subcategory List */
+.subcategory-list {
+  list-style-type: none; /* Remove default list styles */
+  padding-left: 0; /* Remove left padding */
+}
+
+/* Subcategory Item */
+.subcategory-item {
+  margin-bottom: 8px; /* Space between subcategory items */
+}
+
+/* Subcategory Button */
+.subcategory-button {
+  background-color: #93a5b9; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px 12px; /* Padding for buttons */
+  cursor: pointer;
+  width: 100%; /* Full width for buttons */
+  text-align: left; /* Align text to the left */
+}
+
+.subcategory-button:hover {
+  background-color: #939ca5; /* Darker shade on hover */
+}
+
+/* Rotation animation for snowflake */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%;
+  }
+
+  .header-image {
+    max-height: 40px;
+  }
+
+  .snowflake-icon {
+    font-size: 24px;
+  }
+
+  .sidebar {
+    width: 250px; /* Adjust sidebar width for smaller screens */
+  }
+}
+
+/* Suggestions styles */
+.suggestions-list {
+  position: absolute;
+  top: 100%; /* Position below the input */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 200px; /* Limit height */
+  overflow-y: auto; /* Add scroll for overflow */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .search-bar {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .suggestions-list {
+    max-height: 150px; /* Adjust height for smaller screens */
+  }
+}
