@@ -6,7 +6,7 @@ const SearchResults = () => {
   const [filteredResults, setFilteredResults] = useState([]);
   const [expandedIndustry, setExpandedIndustry] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null); // To handle the modal
-  const [selectedIndustry, setSelectedIndustry] = useState(''); // Track selected industry
+  const [selectedIndustry, setSelectedIndustry] = useState(""); // Track selected industry
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
@@ -27,8 +27,13 @@ const SearchResults = () => {
               department.subdepartments.forEach((subdepartment) => {
                 // Check for matching KPIs
                 subdepartment.kpicollection.forEach((kpi) => {
-                  if (kpi.kpi.toLowerCase().includes(searchQuery.toLowerCase())) {
-                    matchedKPIs.push(kpi);
+                  if (
+                    kpi.kpi.toLowerCase().includes(searchQuery.toLowerCase())
+                  ) {
+                    matchedKPIs.push({
+                      ...kpi,
+                      subdepartment: subdepartment.subdepartment,
+                    }); // Include subdepartment for rendering
                   }
                 });
 
@@ -36,7 +41,9 @@ const SearchResults = () => {
                 subdepartment.usecases.forEach((usecaseObj) => {
                   if (
                     typeof usecaseObj.usecase === "string" &&
-                    usecaseObj.usecase.toLowerCase().includes(searchQuery.toLowerCase())
+                    usecaseObj.usecase
+                      .toLowerCase()
+                      .includes(searchQuery.toLowerCase())
                   ) {
                     matchedUseCases.push(usecaseObj); // Push the entire object if matched
                   }
@@ -83,7 +90,7 @@ const SearchResults = () => {
 
   // Function to get the main topic from the industry name
   const getMainTopic = (industry) => {
-    return industry.toLowerCase().replace(/\s+/g, '-'); // Convert to lower case and replace spaces with dashes
+    return industry.toLowerCase().replace(/\s+/g, "-"); // Convert to lower case and replace spaces with dashes
   };
 
   return (
@@ -131,43 +138,49 @@ const SearchResults = () => {
               {/* Expand to show KPIs and use cases */}
               {expandedIndustry === index && (
                 <div className="kpi-container pl-4 mt-2 border border-gray-300 p-4 rounded-lg">
-                  {/* KPIs */}
+                  {/* Use Cases */}
+                  {industry.matchedUseCases.length > 0 && (
+                    <div className="usecase-section mb-4">
+                      <h4 className="text-md font-semibold text-blue-600 mb-2">
+                        Use Cases
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {industry.matchedUseCases.map(
+                          (usecaseObj, usecaseIdx) => (
+                            <button
+                              key={usecaseIdx}
+                              className="bg-blue-500 text-white rounded-md p-2 hover:bg-blue-600 shadow-sm transition-colors duration-300 whitespace-nowrap"
+                              onClick={() =>
+                                handleItemClick(usecaseObj, industry.industry)
+                              } // Pass the entire object and industry name
+                            >
+                              {usecaseObj.usecase}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* KPIs grouped by subdepartment */}
                   <div className="kpi-section mb-4">
                     <h4 className="text-md font-semibold text-green-600 mb-2">
                       KPIs
                     </h4>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="flex flex-wrap gap-2">
                       {industry.matchedKPIs.map((kpi, kpiIdx) => (
                         <button
                           key={kpiIdx}
-                          className="w-full bg-green-500 text-white rounded-md p-2 hover:bg-green-600 shadow-sm"
-                          onClick={() => handleItemClick(kpi, industry.industry)} // Pass the KPI object and industry name
+                          className="bg-green-500 text-white rounded-md p-2 hover:bg-green-600 shadow-sm transition-colors duration-300 whitespace-nowrap"
+                          onClick={() =>
+                            handleItemClick(kpi, industry.industry)
+                          } // Pass the KPI object and industry name
                         >
                           {kpi.kpi}
                         </button>
                       ))}
                     </div>
                   </div>
-
-                  {/* Use Cases */}
-                  {industry.matchedUseCases.length > 0 && (
-                    <div className="usecase-section">
-                      <h4 className="text-md font-semibold text-blue-600 mb-2">
-                        Use Cases
-                      </h4>
-                      <div className="grid grid-cols-3 gap-4">
-                        {industry.matchedUseCases.map((usecaseObj, usecaseIdx) => (
-                          <button
-                            key={usecaseIdx}
-                            className="w-full bg-blue-500 text-white rounded-md p-2 hover:bg-blue-600 shadow-sm"
-                            onClick={() => handleItemClick(usecaseObj, industry.industry)} // Pass the entire object and industry name
-                          >
-                            {usecaseObj.usecase}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               )}
             </div>
@@ -187,20 +200,38 @@ const SearchResults = () => {
             className="modal-content bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full" // Increased modal size
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
           >
-            <h2 className="text-2xl font-bold mb-4">{selectedItem.kpi || selectedItem.usecase}</h2> {/* Dynamic heading */}
+            <h2 className="text-2xl font-bold mb-4">
+              {selectedItem.kpi || selectedItem.usecase}
+            </h2>{" "}
+            {/* Dynamic heading */}
             {/* Display the individual fields of the selected KPI or use case */}
             {typeof selectedItem === "object" ? (
               <>
                 {selectedItem.kpi ? ( // If it’s a KPI
                   <>
-                    <p><strong>Formula:</strong> {selectedItem.formula || 'N/A'}</p>
-                    <p><strong>Explanation:</strong> {selectedItem.explanation || 'N/A'}</p>
+                    <p>
+                      <strong>Formula:</strong> {selectedItem.formula || "N/A"}
+                    </p>
+                    <p>
+                      <strong>Explanation:</strong>{" "}
+                      {selectedItem.explanation || "N/A"}
+                    </p>
                   </>
-                ) : ( // If it’s a Use Case
+                ) : (
+                  // If it’s a Use Case
                   <>
-                    <p><strong>Definition:</strong> {selectedItem.definitions || 'N/A'}</p>
-                    <p><strong>Description:</strong> {selectedItem.description || 'N/A'}</p>
-                    <p><strong>Business Impact:</strong> {selectedItem.business_impact || 'N/A'}</p>
+                    <p>
+                      <strong>Definition:</strong>{" "}
+                      {selectedItem.definitions || "N/A"}
+                    </p>
+                    <p>
+                      <strong>Description:</strong>{" "}
+                      {selectedItem.description || "N/A"}
+                    </p>
+                    <p>
+                      <strong>Business Impact:</strong>{" "}
+                      {selectedItem.business_impact || "N/A"}
+                    </p>
                   </>
                 )}
                 {/* Link to detail page */}
@@ -209,7 +240,7 @@ const SearchResults = () => {
                     onClick={() => {
                       const mainTopic = getMainTopic(selectedIndustry); // Use the selected industry
                       navigate(`/${mainTopic}`); // Adjust link to match your structure dynamically
-                    }} 
+                    }}
                     className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                   >
                     Go to Detail Page
